@@ -1,0 +1,36 @@
+import DPlib
+
+import csv
+
+filename = '/home/hugo/DATA/All_Data_04.06.csv' #path to file to analize
+
+NAMES, vNAMES = DPlib.getNames()
+
+
+DPlib.textClass(text, NAMES)
+
+
+f = open(filename,'rU')
+HEADER = f.readline()[:-1]
+lHEADER =  HEADER.split(',')
+
+print lHEADER
+
+
+
+reader = csv.reader(f)
+
+S_T = []
+
+count = 0
+for row in reader:
+    if count <100:
+        text = row[10]
+        #print text
+        S_T.append(DPlib.textClass(text, NAMES))
+        count = count + 1
+
+for item in list(set(S_T)):
+    print item
+
+
